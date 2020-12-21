@@ -1,0 +1,175 @@
+<html>
+    <head>
+        <title>form1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <style>
+             
+        body {
+              margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+        overflow: hidden;
+        background-color: #333;
+        }
+
+        .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+       }
+
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .topnav a.active {
+        background-color: #4CAF50;
+        color: white;
+      }
+      .topnav b {
+        float: right;
+        display: block;
+        color: white;
+        text-align: right;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 34px;
+      }
+
+      .topnav b:hover {
+        background-color: #ddd;
+        color: black;
+      }
+        
+      body{
+        background-image: url("img1.jpeg");
+        color: white;
+        }
+        
+        input.transparent-input{
+        background-color:rgba(0,0,0,0) 
+        }
+            
+        th, td {
+            padding: 15px;
+        }
+
+        @media (max-width: 600px) {  
+                .col1, .col2 {width:100%;
+                    font-size:1.8rem;}
+                }
+ 
+        @media screen and (min-width:900px){
+                body{
+                        font-size:1.6rem;
+                        center:50%
+                    }
+                }
+                .col1{
+                    float:left;
+                    width:25%;
+                    margin-top:8px;
+                   
+                    
+                    
+                }
+            .col2{
+                    float:left;
+                   
+            }
+                 .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:black;
+   color: white;
+   text-align: center;
+   height: 25px;
+   font-size: 18px;
+}
+              
+
+        </style>
+        <script type='text/javascript'>
+            function validation()
+            {
+                if (document.login.email.value == "")
+                {
+                    alert("Username should not be empty")
+                    return false;
+                }
+                if (document.login.pwd.value == "")
+                {
+                    alert("Password should not be empty")
+                    return false;
+                }
+                return true;
+            }       
+        </script>
+    </head>
+    <body  style="background-image:url('img1.jpeg')">
+        
+        <center>
+         <h1   style=" font-size:5vw; font-family:courier; text-align:center">SOLIDUOUS SYSTEMWARE</h1>
+          <div class="topnav">
+        <a class="active" href="homepage.php">Home</a>
+        <a href="http://localhost/miniproject/ajax.php">Service Centres</a>
+        <a href="http://localhost/miniproject/form2.html">Feedback</a>
+        <a href="http://localhost/miniproject/aboutus.php">About Us</a>
+        
+         <?php
+                        session_start();
+                        if (!isset($_SESSION['email'])) {    
+                            ?>
+                        <a href="form1.html">Login</a>
+                        <a href="customer.html">Registration</a>  
+                        <?php } else {
+                            ?>
+                        <a href="cdetails.php" style='color:red'><?php echo $_SESSION['email'] ?></a> 
+                        
+                        <a href='logout.php'>Logout</a>
+                        <?php } ?>
+         </div>
+        
+        <h1 style="font-size:10vw">Login</h1>
+        <form name='login' class="form-horizontal" method="POST" action="login.php"  onsubmit="return validation()">
+            <table >
+                 
+                <tr  >
+                    <th class="col1" >Username </th> <th class="col2" > <input type="text"  placeholder="Enter Username" class="form-control transparent-input" name="email" id="email"> </th>
+                </tr>
+                     
+                <tr >
+                    <th class="col1" >Password </th> <th class="col2" ><input type="password"  placeholder="Enter password" class="form-control transparent-input" name="pwd" id="pwd"> </th>
+                </tr>
+
+                <tr >                    
+                    <th  class="col2"><button type="submit" class="btn btn-success" name="submit">Submit</button> </th> 
+                </tr>
+   
+            </table>
+            
+            <div class="footer">
+            <p class="leftFooter">
+                © 2018 Soliduous Systemware. All rights reserved.
+            </p>
+            </div>
+            
+        </form>
+        
+        </center>
+
+        
+    </body>
+</html>

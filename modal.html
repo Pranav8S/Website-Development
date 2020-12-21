@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>form1</title>
+        <meta charset="UTF-8">
+      
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <style>
+             
+ 
+    .modal {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  
+  color: white;
+}
+
+    .modal-content{
+        background-image: url("img1.jpeg");
+    }
+
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .topnav b {
+      float: right;
+      display: block;
+      color: white;
+      text-align: right;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 34px;
+    }
+
+    .topnav b:hover {
+      background-color: #ddd;
+      color: black;
+    }
+            
+    body{
+        background-image: url("img1.jpeg");
+        color: white;
+        }
+        
+        input.transparent-input{
+        background-color:rgba(0,0,0,0) 
+        }
+            
+        th, td {
+            padding: 15px;
+        }
+
+        @media (max-width: 600px) {  
+                .col1, .col2 {width:100%;
+                    font-size:1.5rem;}
+                }
+ 
+        @media screen and (min-width:900px){
+                body{
+                        font-size:1.3rem;
+                        center:50%
+                    }
+                }
+                .col1{
+                    float:left;
+                    width:30%;
+                    
+                   
+                    
+                    
+                }
+            .col2{
+                    float:left;
+                   
+            }
+                 
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:black;
+   color: white;
+   text-align: center;
+   height: 25px;
+   font-size: 18px;
+}
+
+        </style>
+        <script type='text/javascript'>
+            function validation()
+            {
+                if (document.login.username.value == "")
+                {
+                    alert("Username should not be empty")
+                    return false;
+                }
+                if (document.login.password.value == "")
+                {
+                    alert("Password should not be empty")
+                    return false;
+                }
+                return true;
+            }       
+        </script>
+    </head>
+<body  style="background-image:url('img1.jpeg')">
+    
+    <center>
+    
+    <h1   style="background-color:#f2f2f2; font-size:5vw; font-family:courier; text-align:center">SOLIDUOUS SYSTEMWARE</h1>
+          <div class="topnav">
+        <a class="active" href="homepage.html">Home</a>
+        <a data-toggle="modal" data-target="#myModal" ">Login</a>
+        <a href="http://localhost/miniproject/customer.html">Register</a>
+        <a href="http://localhost/miniproject/ajax.html">Service Centres</a>
+        <a href="http://localhost/miniproject/form2.html">Feedback</a>
+        <a href="http://localhost/miniproject/aboutus.html">About Us</a>
+        </div>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        
+        
+        
+         
+        <h1 style="font-size:10vw">Login</h1>
+        <form name='login' class="form-horizontal" method="post" action="login.php"  >
+            <table >
+                 
+                <tr  >
+                    <th class="col1" >Username </th> <th class="col2" > <input type="text"  placeholder="Enter Username" class="form-control transparent-input" name="username"> </th>
+                </tr>
+                     
+                <tr >
+                    <th class="col1" >Password </th> <th class="col2" ><input type="password"  placeholder="Enter password" class="form-control transparent-input" name="password"> </th>
+                </tr>
+
+                <tr >                    
+                    <th  class="col2"><button type="submit" class="btn btn-success" name="submit1" onclick
+                                              ="return validation()">Submit</button> </th>
+                
+                
+                    <th class="col1"><button type="submit" class="btn btn-danger" name="submit2">Forgot Password</button></th>
+                </tr>
+   
+            </table>
+            
+            
+            
+        </form>
+        
+        
+
+        
+
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class="footer">
+            <p class="leftFooter">
+                © 2018 Soliduous Systemware. All rights reserved.
+            </p>
+            </div>
+  
+    
+    </center>
+
+</body>
+</html>

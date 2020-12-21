@@ -1,0 +1,82 @@
+
+                        <?php
+                        
+                        if (isset($_SESSION['cname'])) {
+                            ?>
+                        <a style='color:red'>logged in </a> </li> 
+
+                        <a href='logout.php'>Logout</a><?php } else {
+                            ?>
+                        <a href="login.html">Login</a>
+                        <a href="registration.html">Registration</a>     
+                    </ul><?php } ?>
+                    
+                    
+                    
+                    <?php
+session_start();
+session_destroy();
+header('Location: homepage1.php');
+exit;
+?>
+
+
+
+
+<?php
+
+session_start();
+//if(isset($_SESSION['user'])){
+//  header("location: purchase.php"); 
+//}
+$cname = $pwd = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $cname = clean_input($_POST["cname"]);
+    $pwd = clean_input($_POST["pwd"]);
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "project";
+
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+
+    $query = "SELECT cname,pwd,usertype FROM customer WHERE cname='$cname' and pwd='$pwd'";
+    $result = mysqli_query($conn, $query) or die('Error on checking username and Password');
+    $count = mysqli_num_rows($result);
+    $row = mysqli_fetch_array($result);
+//if (mysqli_num_rows($login_q) > 0) {
+    if ($count == 1) {
+        
+        if ($row['usertype'] == 1) {
+            $_SESSION['logged']=true;
+            $_SESSION['cname'] = $cname;
+             echo "<div id='loginmsg'> Logged in as $cname </div>";
+            header("location:ModifyTable.php");
+        } else {
+             $_SESSION['logged']=true;
+             $_SESSION['cname'] = $cname;
+            //echo ' Logged in as '.$_SESSION['cname'].'<br>';
+            
+            
+            //echo $_SESSION['cname'];
+            header("location:homepage1.php");
+        }
+    } else {
+        $_SESSION['logged']=false;
+        echo" Wrong password";
+    }
+}
+
+function clean_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+?>
